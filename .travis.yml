@@ -5,8 +5,7 @@ php:
 before_install: true
 
 install:
-    - echo "Salut"
-    - echo "Test"
+    - composer install
 
 before_script: true
 
