@@ -12,7 +12,7 @@ class Calculator
 {
     public function add(int $firstNumber, int $secondNumber): int
     {
-        return $firstNumber + $secondNumber;
+        return $firstNumber + $secondNumber + 2 ;
     }
 
     public function divide(float $a, float $b): float
