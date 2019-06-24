@@ -11,7 +11,5 @@ before_script: true
 
 script:
     - phpunit tests
-    - .\vendor\bin\phpcs
-    - .\vendor\bin\phpcbf
 
 after_script: true
