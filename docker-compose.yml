@@ -34,4 +34,4 @@ services:
           - "8080:80"
       environment:
           MYSQL_ROOT_PASSWORD: root
-PMA_HOST: database
+          PMA_HOST: database
