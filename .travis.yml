@@ -2,12 +2,12 @@ language: 'php'
 php:
     - '7.3'
     
-before_install: false
+before_install: true
 
-instal: false
+instal: true
 
-before_script: false
+before_script: true
 
-script: false
+script: true
 
-after_script: false
+after_script: true
