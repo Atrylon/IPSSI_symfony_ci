@@ -12,6 +12,6 @@ before_script: true
 
 script:
     - ./vendor/bin/php-cs-fixer fix --dry-run --diff
-    - phpunit testscomposer global require friendsofphp/php-cs-fixer
+    - phpunit tests
 
 after_script: true
