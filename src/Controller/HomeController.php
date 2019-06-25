@@ -10,6 +10,6 @@ class HomeController
 {
     public function handle(): Response
     {
-        return new Response('ok');
+        return new Response('ok IT\'s TOO HOT');
     }
 }
