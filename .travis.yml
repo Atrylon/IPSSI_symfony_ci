@@ -1,17 +1,16 @@
 language: 'php'
 php:
     - '7.3'
+
+cache:
+    directories:
+        - $HOME/.composer/cache
     
 before_install: true
 
 install:
-#    - composer require friendsofphp/php-cs-fixer --dev
     - composer install
-
-before_script: true
 
 script:
     - ./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose
     - phpunit tests
-
-after_script: true
