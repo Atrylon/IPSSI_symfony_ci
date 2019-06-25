@@ -15,8 +15,8 @@ script:
     - ./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose
     - phpunit tests
 
-#deploy:
-#  provider: heroku
-#  api_key:
-#    secure: "ee799555-591e-4a18-a004-a82ff434e110"
-#  app: symfonycicd
+deploy:
+  provider: heroku
+  api_key:
+    secure: "ee799555-591e-4a18-a004-a82ff434e110"
+  app: symfonycicd
