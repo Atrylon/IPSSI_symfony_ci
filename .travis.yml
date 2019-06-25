@@ -5,7 +5,7 @@ php:
 before_install: true
 
 install:
-    - composer require friendsofphp/php-cs-fixer --dev
+#    - composer require friendsofphp/php-cs-fixer --dev
     - composer install
 
 before_script: true
