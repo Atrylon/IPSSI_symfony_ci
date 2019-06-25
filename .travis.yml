@@ -1,22 +1,17 @@
-language: 'php'
+language: php
 php:
-    - '7.3'
-
+  - '7.3'
 cache:
-    directories:
-        - $HOME/.composer/cache
-    
+  directories:
+    - "$HOME/.composer/cache"
 before_install: true
-
 install:
-    - composer install
-
+  - composer install
 script:
-    - ./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose
-    - phpunit tests
-
+  - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+  - phpunit tests
 deploy:
   provider: heroku
   api_key:
-    secure: "ee799555-591e-4a18-a004-a82ff434e110"
+    secure: cK6gsrU6JRpmt/P+y6EcTiN8xgL2OElHq4sTKcYIwuLoPuBFy2sMv9OoCv/ErDpN/lc7MPbvtenT1MetrpBWXTERamT5UoNg8lgRA8L9j9CZMqBWoB6HJi3eAaSd1QOyA5iYXXOS+g/JIgRrWt1V20oDD3h4dcvB0988sniw/klr1GHgi2NjlJ1WUJE79GcC+f7v3Wtny6cQ6XhiGUlflagNelOfX3+QrHx04pyTuD/NgrGOVf0A2HFRL6kljtBm3nq84rwAhLUg1td/8p/avQQg3Gaup2qO3lNUQQ/dmc9g4YZGYAvqU1TGTXct/lg9AVoBI1fzif80bka0SHacLg5MsQhvRcmHJmy51Yg5TlQgYuQrL4oWJQURHM9rXKYv8GXZuJw1lGhO6kQacVljKQX7zSouoQ95i1vOqKMXr5J9XY4MJY8Mqm81vZEw7KTJAousFWXdqCnlLtXWJof50KLqLIrsm09p6LZJW8TyaW6NA70LdMMfzy5wGoApKWpg7opbs7q2IJz5S9wH+mqp9kNgPRROcRU/ZvV8YB2fmPiUU+/xqgw2V82H7IX6WODVYNoK5K/84t2S++965gStz0cbqMDcog9m69mg8hUmzwz/DI65doreQw7gudG3jVU3rIB4sWS+eV7laF6TqEqT5627A8RsjYty0Ru+uiAhBJw=
   app: shielded-thicket-67247
