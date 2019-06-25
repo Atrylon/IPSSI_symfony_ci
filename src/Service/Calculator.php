@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: beren
- * Date: 24/06/2019
- * Time: 14:30
- */
 
 namespace App\Service;
 
@@ -17,7 +11,7 @@ class Calculator
 
     public function divide(float $a, float $b): float
     {
-        if ($b === 0) {
+        if (0 === $b) {
             throw new InvalidArgumentException('Dividing by zero is impossible🤯🤯🤯🤯🤯');
         }
 
