@@ -1,17 +1,17 @@
 language: php
 php:
-  - '7.3'
+- '7.3'
 cache:
   directories:
   - "$HOME/.composer/cache"
 before_install: true
 install:
-  - composer install
+- composer install
 script:
-  - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
-  - phpunit tests
+- "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+- phpunit tests
 deploy:
   provider: heroku
   api_key:
-    secure: "cmjMf9WP7ZFFowdEGwKR4xvUOtBOZiRRNZhuddiHqTbLwx6NUJcz0Fy2yuEevW+2j8NwitgIKJ71qp69NPE/p+nV1My8gLIGF/h9zy9JpYOQH07NCsaU54D2jW/CNIzs8lOoIWazM4DObLOgeCNoaTUbGltxh0iFl9C6LW6zAkL9lsHdX/RkCp5diHZznDWJaxyVjmWpU/M9LaTJS+kzILxvoWxSPrsrhKnQHVVBOKdJzXDUJA9uZSB4ZyEHc8mJQtxDTuSChuJ8B7quZYi6MGxTXX98hKe/nqIUveE4Pu/qIuv/RpUucEdxyrSPeNCpjg/Ju8ZXxVj+EXEaf17oJtRkk4n+xSBrDOeoR6HaGcyEytPNmWzBmSgu5/ntCy0P+EMvUFZ/xKvfC8tzAvQO1zb5Up1AKyJ6bDKM7q0DuCzCEwIc5BEHkoTAESYOWj7ABQ+zhcvEAKh4mAXn6Ufn/1WoutZWQtOgaFuJL7VU+/EAYXC5RzmjBYJY7J8VGx/n8CbXJA9k63o8zRWqQ+H2YUJL9gin6SaPpMMDYsAjPcPR7N6kIWU7kWw2KxQr+JwlCMaorBEp02c5PbVNMnNfFjd5ay2PJzheyiBXwe1t1g6DatWZFMBLWPENazP2vH1xT7gdxrKQ0bGrPV2+3cJlC+Ov/XR4hqfSUj2GLC/X7Bo="
+    secure: oCNUPGPJaRdx0KYz/M57aWPnPabTpyAxiig77WON1sxUotK3LsQU5avlh8B2f53rimCzW+RsPnf/ZouCa5DH9AArGfUYrbpLBzGpAEZtgmr2ZflWKTs9KvG1SpP2Gve65nTG8ysZD5Dp2NGFaK6ndb4pMlZK22xEkpgBJyTIJBGDoq7l+9KBzxv/AibF6MgPBJso+2MCZDmt5z7043tGxd0cCIhyb7OjyHMPBOaCtnMYlCl/Y+Ac1ztV9l5awHHu1z2orD+kTIO30KqCUqerXbctEqtJvqv+bNohPh1VzeiFj7C2teJU6OBWt8GmM1sZOH8JVdWfl8LrjooerJTUOnqzZxkXPkyjphbPzPK4uc4ENIiHOCIdBnE3NRcRNp7QpKaWkt1iyp4Oi34kf973k2Z0EGHT1dSVzvSZx1kN2yzcwAlV/EWuiPiW2gJvPpPiVRkY0oM1aWZwXbeEL4MTGddpjPTRa8avsqr/N/oqF7SJdS2si6hniNWB1I/fJnwUGeLLETmoKGcRoZDLCQwuAEWXZ+7eq0ILTQRTIzHL/ocLnf587EUjM2Rq/+WDvyem5vL3PanZvw6tayDZCYMRNmYlKf+gvC7kfdSf+4JRBmND4pnx6ZdY5fF7XQoYIEs3Fyi/O0vcLevoWh6MHg6wDCG2UGy9e/uuXQEAjHoxhXQ=
   app: shielded-thicket-67247
