@@ -12,7 +12,7 @@ class Calculator
     public function divide(float $a, float $b): float
     {
         if (0 === $b) {
-            throw new InvalidArgumentException('Dividing by zero is impossible🤯🤯🤯🤯🤯');
+            throw new InvalidArgumentException('Dividing by zero is impossible🤯🤯🤯🤯🤯 :o');
         }
 
         return $a / $b;
