@@ -14,3 +14,4 @@ install:
 script:
     - ./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose
     - phpunit tests
+
