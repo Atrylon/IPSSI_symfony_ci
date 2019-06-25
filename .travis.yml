@@ -5,13 +5,13 @@ php:
 before_install: true
 
 install:
+    - composer require friendsofphp/php-cs-fixer --dev
     - composer install
 
 before_script: true
 
 script:
-    - phpunit tests
-    - .\vendor\bin\phpcs
-    - .\vendor\bin\phpcbf
+    - ./vendor/bin/php-cs-fixer fix --dry-run --diff
+    - phpunit testscomposer global require friendsofphp/php-cs-fixer
 
 after_script: true
