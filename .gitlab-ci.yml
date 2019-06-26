@@ -2,18 +2,24 @@ image: 'php:7.3'
 
 cache:
   paths:
-  - "$HOME/.composer/cache"
+  - vendor/
 
 stages:
   - test
 
+variables:
+   APP_ENV: prod
+
 before_script:
-  - docker pull composer
-  - docker pull alpine/git
+   - apt-get update
+   - apt-get install zip unzip
+   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+   - php composer-setup.php
+   - php -r "unlink('composer-setup.php');"
+   - php composer.phar install
 
 test:
   stage: test
   script:
-    - composer install
     - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
     - phpunit tests
