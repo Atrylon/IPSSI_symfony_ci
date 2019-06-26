@@ -14,7 +14,7 @@ variables:
 before_script:
   - echo "INSTALLATION"
   - apt-get update
-  - apt-get install -y git zip unzip
+  - apt-get install -y git zip unzip heroku
   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
   - php composer-setup.php
   - php -r "unlink('composer-setup.php');"
@@ -35,7 +35,6 @@ unit_test:
 production:
   type: deploy
   script:
-    - git config --global user.name = "atrylon"
-    - git config --global user.email = "berenger.desgardin@gmail.com"
+    - heroku login
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/shielded-thicket-67247.git
     - git push -f heroku HEAD:master
