@@ -11,6 +11,7 @@ variables:
    APP_ENV: prod
 
 before_script:
+  - echo "INSTALLATION"
   - apt-get update
   - apt-get install zip unzip
   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -18,7 +19,12 @@ before_script:
   - php -r "unlink('composer-setup.php');"
   - bash ci/docker_install.sh > /dev/null
 
-test:
+php_cs_fixer:
   stage: test
   script:
-    - phpunit
+    - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+
+test_unit:
+  stage: test
+  script:
+    - phpunit --configuration phpunit_myapp.xml
