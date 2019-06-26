@@ -38,6 +38,4 @@ production:
     - git config --global user.name = "atrylon"
     - git config --global user.email = "berenger.desgardin@gmail.com"
     - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/shielded-thicket-67247.git
-    - git push -f heroku master
-  only:
-    - master
+    - git push -f heroku
