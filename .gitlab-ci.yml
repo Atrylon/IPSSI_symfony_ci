@@ -29,6 +29,7 @@ php_cs_fixer:
 unit_test:
   stage: test
   script:
+    - chmod +x bin/phpunit
     - "./bin/phpunit tests"
 
 production:
