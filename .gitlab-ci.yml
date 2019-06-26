@@ -1,0 +1,12 @@
+language: php
+php:
+- '7.3'
+cache:
+  directories:
+  - "$HOME/.composer/cache"
+before_install: true
+install:
+- composer install
+script:
+- "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+- phpunit tests
