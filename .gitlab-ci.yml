@@ -5,7 +5,7 @@ cache:
   - "$HOME/.composer/cache"
 
 stages:
-  -test
+  - test
 
 test:
   stage: test
