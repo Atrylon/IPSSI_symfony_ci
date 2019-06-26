@@ -1,6 +1,5 @@
-language: php
-php:
-- '7.3'
+image: 'php:7.3'
+
 cache:
   paths:
   - "$HOME/.composer/cache"
