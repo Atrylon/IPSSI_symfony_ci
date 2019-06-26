@@ -6,11 +6,13 @@ cache:
 
 stages:
   - test
+  - deploy
 
 variables:
    APP_ENV: prod
 
 before_script:
+  - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
   - echo "INSTALLATION"
   - apt-get update
   - apt-get install zip unzip
@@ -19,12 +21,16 @@ before_script:
   - php -r "unlink('composer-setup.php');"
   - bash ci/docker_install.sh > /dev/null
 
-php_cs_fixer:
-  stage: test
-  script:
-    - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
-
 test_unit:
   stage: test
   script:
     - phpunit --configuration phpunit_myapp.xml
+
+deployment:
+  stage: deploy
+  script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$SSH_PRIVATE_KEY")
+    - mkdir -p ~/.ssh
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
