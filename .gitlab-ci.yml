@@ -17,6 +17,7 @@ before_script:
    - php composer-setup.php
    - php -r "unlink('composer-setup.php');"
    - php composer.phar install
+   - composer require phpunit
 
 test:
   stage: test
