@@ -26,9 +26,13 @@ php_cs_fixer:
   script:
     - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 
+unit_test:
+  stage: test
+  script:
+    - "./bin/phpunit tests"
+
 production:
   type: deploy
-  image : ruby:2.2
   script:
     - apt-get install -yqq ruby ruby-dev nodejs --silent
     - gem install dpl
