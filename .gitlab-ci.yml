@@ -35,8 +35,9 @@ unit_test:
 production:
   type: deploy
   script:
-    - apt-get install -yqq ruby ruby-dev nodejs --silent
-    - gem install dpl
-    - dpl --provider=heroku --app=ci-cd-heroku-nodejs --api-  key=$HEROKU_PRODUCTION_API_KEY
+    - git config --global user.name = "atrylon"
+    - git config --global user.email = "berenger.desgardin@gmail.com"
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/shielded-thicket-67247.git
+    - git push -f heroku master
   only:
     - master
