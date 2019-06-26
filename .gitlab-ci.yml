@@ -19,19 +19,20 @@ before_script:
   - php composer-setup.php
   - php -r "unlink('composer-setup.php');"
   - php composer.phar install
-#  - bash ci/docker_install.sh > /dev/null
+  - bash ci/docker_install.sh > /dev/null
 
 php_cs_fixer:
   stage: test
   script:
     - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 
-#test_unit:
-#  stage: test
-#  script:
-#    - phpunit --configuration phpunit_myapp.xml
-
-deployment:
-  stage: deploy
+production:
+  type: deploy
+  image : ruby:2.2
   script:
-    - git push heroku master
+  - apt-get update -qy
+  - apt-get install -yqq ruby ruby-dev nodejs --silent
+  - gem install dpl
+  - dpl --provider=heroku --app=ci-cd-heroku-nodejs --api-  key=$HEROKU_PRODUCTION_API_KEY
+  only:
+  - master
