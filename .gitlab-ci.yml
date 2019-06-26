@@ -34,4 +34,4 @@ php_cs_fixer:
 deployment:
   stage: deploy
   script:
-    - git push origin heroku
+    - git push heroku master
