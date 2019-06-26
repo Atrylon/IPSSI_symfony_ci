@@ -26,10 +26,10 @@ php_cs_fixer:
   script:
     - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 
-test_unit:
-  stage: test
-  script:
-    - phpunit --configuration phpunit_myapp.xml
+#test_unit:
+#  stage: test
+#  script:
+#    - phpunit --configuration phpunit_myapp.xml
 
 deployment:
   stage: deploy
