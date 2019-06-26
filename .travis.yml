@@ -10,10 +10,3 @@ install:
 script:
 - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 - phpunit tests
-deploy:
-  provider: heroku
-  api_key:
-    secure: Txtg4xc+goEPDMeUbOltL3DHhwri8wrG5xIjryG1NaUbUpBolquAeW/JjxnGWdRULkPkZdJdgXBnzH95i6Kp7gtA0HAoU9n33PQy95TsVn0fsAsFVWCbT8yuKoHOole4JFWtANP4WpiokrDoujLcYhPiBwgjZbajWO9sExIE+boOANKQ3vec5ocJrb0z3BlCrQqsidT8mlVaFNG81iK9m7MggkfJ7FcraKz+JAV6Jc8lbg+aJIuFCv5oyHNx2vghjYoivJUTVfxPNgOO4/iVVH2Kk7+lef4pS1SnHeQgnOoM+0ZAVuy0gkGNlLicGajL1kurHWe36nbnKBe9hbduss2cWI20nlS8n8iuveRCryLpSpSdGxznHmhm7XT6/y6eru6Ff2A5eQXsGQ0NAiW7od6YUw+UmZmQpD3KQK/08bXPT41L9r8pjemm0pF+l5s7a4gXbj65Q5mHzjN0cT2Pa3MM/+/xhoK4IskPBvjJjwW1iP0AH/kbGbxpKNyWkhHBAGheub5sPRSE/ac8uG5qdRLboUhnPZOaMjCRPVtLmT/KGSU6sRvYnSPA7T9OBBFdcEsLiDim8Y+1Xg9J5vU6/a7hGEVXUghsxX+QQieEKbfhIXlJTNOx7mj5p86JtcVDonHkGBDuIQtDJYrWIf35z37ml9Dsdq5YL9eqlbtuqi0=
-  app: shielded-thicket-67247
-  on:
-    repo: Atrylon/IPSSI_symfony_ci
