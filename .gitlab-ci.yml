@@ -3,9 +3,13 @@ image: 'php:7.3'
 cache:
   paths:
   - "$HOME/.composer/cache"
-before_install: true
-install:
-- composer install
-script:
-- "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
-- phpunit tests
+
+stage:
+  -test
+
+test:
+  stage: test
+  script:
+    - composer install
+    - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+    - phpunit tests
