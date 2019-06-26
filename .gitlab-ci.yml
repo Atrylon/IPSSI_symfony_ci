@@ -14,12 +14,12 @@ variables:
 before_script:
   - echo "INSTALLATION"
   - apt-get update
-  - apt-get install zip unzip
+  - apt-get install -y git zip unzip
   - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
   - php composer-setup.php
   - php -r "unlink('composer-setup.php');"
   - php composer.phar install
-  - bash ci/docker_install.sh > /dev/null
+#  - bash ci/docker_install.sh > /dev/null
 
 php_cs_fixer:
   stage: test
@@ -31,12 +31,7 @@ php_cs_fixer:
 #  script:
 #    - phpunit --configuration phpunit_myapp.xml
 
-production:
+deployment:
   stage: deploy
   script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
-  - gem install dpl
-  - dpl --provider=heroku --app=gitlab-ci-python-test-prod --api-key=$HEROKU_PRODUCTION_API_KEY
-  only:
-  - tags
+    - git push origin heroku
