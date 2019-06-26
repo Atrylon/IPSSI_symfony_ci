@@ -1,36 +1,50 @@
-image: 'php:7.3'
-
+image: php:7.3
+services:
+   - mysql:latest
 cache:
-  paths:
-  - vendor/
+   paths:
+   - vendor/
 
 stages:
-  - test
-  - deploy
+   #- connect
+   - test
+   #- deploy
 
 variables:
+   # Configure mysql service (https://hub.docker.com/_/mysql/)
+   #MYSQL_DATABASE: database
+   #MYSQL_USER: runner
+   #MYSQL_ROOT_PASSWORD: password
+   #MYSQL_PASSWORD: password
    APP_ENV: prod
-
 before_script:
-  - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
-  - echo "INSTALLATION"
-  - apt-get update
-  - apt-get install zip unzip
-  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  - php composer-setup.php
-  - php -r "unlink('composer-setup.php');"
-  - bash ci/docker_install.sh > /dev/null
+   - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+   #- apt-get update -yqq
+   #- apt-get install git -yqq zlib1g-dev
+   ## Install mysql driver
+   #- docker-php-ext-install pdo_mysql zip
+   ## Install composer
+   #- curl -sS https://getcomposer.org/installer | php
+   ## Install all project dependencies
+   #- php composer.phar install
+   - npm install
+   - npm run deploy
 
-test_unit:
-  stage: test
-  script:
-    - phpunit --configuration phpunit_myapp.xml
+#test:
+   #stage: test
+   #script:
 
-deployment:
-  stage: deploy
-  script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SSH_PRIVATE_KEY")
-    - mkdir -p ~/.ssh
-    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+       #- cp .env.test .env
+       #- php bin/console doctrine:database:create -e test
+       #- php bin/console make:migration -e test
+       #- php bin/console doctrine:fixture:load -no-interaction -e test
+       #- php composer.phar test
+
+#deploy:
+   #stage: deploy
+   #script:
+       #- 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+       #- eval $(ssh-agent -s)
+       #- ssh-add <(echo "$SSH_PRIVATE_KEY")
+       #- mkdir -p ~/.ssh
+       #- echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
