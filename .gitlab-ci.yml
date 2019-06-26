@@ -32,7 +32,7 @@ php_cs_fixer:
 #    - phpunit --configuration phpunit_myapp.xml
 
 production:
-  type: deploy
+  stage: deploy
   script:
   - apt-get update -qy
   - apt-get install -y ruby-dev
