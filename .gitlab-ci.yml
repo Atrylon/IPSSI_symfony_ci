@@ -19,4 +19,5 @@ unit_test:
   stage: test
   script:
     - docker pull phpunit/phpunit
-    - "./bin/phpunit tests"
+    - docker run -v $(pwd):/app --rm phpunit/phpunit run
+    - phpunit --version
