@@ -13,7 +13,7 @@ php_cs_fixer:
   stage: test
   script:
     - docker pull takamichi/php-cs-fixer
-    - docker phpunit tests
+    - docker run --rm -v $(pwd):/workdir takamichi/php-cs-fixer
 
 unit_test:
   stage: test
