@@ -19,4 +19,4 @@ unit_test:
   stage: test
   script:
     - docker pull phpunit/phpunit
-    - docker run --rm -v $(pwd):/workdir phpunit/phpunit
+    - docker run --rm -v $(pwd):/workdir phpunit/phpunit tests/Service/CalculatorTest
