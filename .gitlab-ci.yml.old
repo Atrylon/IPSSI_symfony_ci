@@ -1,0 +1,41 @@
+image: 'php:7.3'
+
+cache:
+  paths:
+  - vendor/
+
+stages:
+  - test
+  - deploy
+
+variables:
+   APP_ENV: prod
+
+before_script:
+  - echo "INSTALLATION"
+  - apt-get update
+  - apt-get install -y git zip unzip
+  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  - php composer-setup.php
+  - php -r "unlink('composer-setup.php');"
+  - php composer.phar install
+  - bash ci/docker_install.sh > /dev/null
+
+php_cs_fixer:
+  stage: test
+  script:
+    - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
+
+unit_test:
+  stage: test
+  script:
+    - chmod +x bin/phpunit
+    - "./bin/phpunit tests"
+
+production:
+  type: deploy
+  script:
+    - git config --global user.name = "atrylon"
+    - git config --global user.email = "berenger.desgardin@gmail.com"
+    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/shielded-thicket-67247.git
+    - git push -f heroku HEAD:master

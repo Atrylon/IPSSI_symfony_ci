@@ -1,40 +1,22 @@
-image: 'php:7.3'
+image: docker
 
-cache:
-  paths:
-  - vendor/
+services:
+  - docker:dind
+
+before_script:
+  - docker run -v $PWD:/app composer install
 
 stages:
   - test
-  - deploy
-
-variables:
-   APP_ENV: prod
-
-before_script:
-  - echo "INSTALLATION"
-  - apt-get update
-  - apt-get install -y git zip unzip heroku
-  - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-  - php composer-setup.php
-  - php -r "unlink('composer-setup.php');"
-  - php composer.phar install
-  - bash ci/docker_install.sh > /dev/null
 
 php_cs_fixer:
   stage: test
   script:
+    - docker pull takamichi/php-cs-fixer
     - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 
 unit_test:
   stage: test
   script:
-    - chmod +x bin/phpunit
+    - docker pull phpunit/phpunit
     - "./bin/phpunit tests"
-
-production:
-  type: deploy
-  script:
-    - heroku login
-    - git remote add heroku https://heroku:$HEROKU_API_KEY@git.heroku.com/shielded-thicket-67247.git
-    - git push -f heroku HEAD:master
