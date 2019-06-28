@@ -10,6 +10,8 @@ install:
 script:
 - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 - phpunit tests
+
+#Pour travis org
 deploy:
   provider: heroku
   api_key:
@@ -18,7 +20,7 @@ deploy:
     on:
   repo: Atrylon/IPSSI_symfony_ci
 
-Pour Travis com
+#Pour Travis com
 #deploy:
 #  provider: heroku
 #  api_key:
