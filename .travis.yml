@@ -11,11 +11,20 @@ script:
 - "./vendor/bin/php-cs-fixer fix --dry-run --diff --verbose"
 - phpunit tests
 
+#Pour travis org
 deploy:
   provider: heroku
   api_key:
     secure: kVt7gRRxX7Q0QqA8FdZojbGqHccSSjsjc27S9jvLFGpmA/AZnoiQ+4H5M2Y3nlYlpsKh+Ygx6ZWDnYaj7SMrHNwqcuQYa0MS05Hb6IlOTvE+6W+iYN2yPhfoE+RpBh4E4tOlAMP2mqtZqphx81XvM3gX+PMzHazvkYU8vkxR9ZVA6FY8l73YBLA/vAn17v9xKrTnjnAORWyMYkBa+CONLi6tQFlWt9R1KQ8TNR3G3egzqKGwwH6YV+nNDBAofBYSk4CY3lcho9b1XF95K5PiiMBJNmC2qFqCoGU6mxH2ouDDyBymA0CUISZX90kHecxvWf/V4wMMswzIVYUTIqZ3a2/RcGBMAxcFGVDhOgSavRJNCbHFHFaX8296+ZnT/IrhOYuLGC5kHNfHQ+WSwVw1FWqkKycPBFcd+afy60brur7QKKf13VqrauOJpcRJGn46L28YT4AN5LRArmcP7PwHQHpVD+AZCat6KCMvWu2mrUbUVhka2r7wy09QRiqE2Pr97m52SpUt0r/Jo+X8n6vAZArEeCI3ki2m6RJIxMHQW5Fb8KKENe8DdWvircunB932s2FMM2BwJVW/POYUeWKXIrdfOl7QlstyK2QcNFTgoQFcNrc0A35GtcAOKPAF6KMSmp4HxseObEAC9/5E+bdb25oHL/YiAXitMy+OIslJebY=
   app: shielded-thicket-67247
-    on:
-  repo: Atrylon/IPSSI_symfony_ci
+  on:
+    repo: Atrylon/IPSSI_symfony_ci
 
+#Pour Travis com
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: Txtg4xc+goEPDMeUbOltL3DHhwri8wrG5xIjryG1NaUbUpBolquAeW/JjxnGWdRULkPkZdJdgXBnzH95i6Kp7gtA0HAoU9n33PQy95TsVn0fsAsFVWCbT8yuKoHOole4JFWtANP4WpiokrDoujLcYhPiBwgjZbajWO9sExIE+boOANKQ3vec5ocJrb0z3BlCrQqsidT8mlVaFNG81iK9m7MggkfJ7FcraKz+JAV6Jc8lbg+aJIuFCv5oyHNx2vghjYoivJUTVfxPNgOO4/iVVH2Kk7+lef4pS1SnHeQgnOoM+0ZAVuy0gkGNlLicGajL1kurHWe36nbnKBe9hbduss2cWI20nlS8n8iuveRCryLpSpSdGxznHmhm7XT6/y6eru6Ff2A5eQXsGQ0NAiW7od6YUw+UmZmQpD3KQK/08bXPT41L9r8pjemm0pF+l5s7a4gXbj65Q5mHzjN0cT2Pa3MM/+/xhoK4IskPBvjJjwW1iP0AH/kbGbxpKNyWkhHBAGheub5sPRSE/ac8uG5qdRLboUhnPZOaMjCRPVtLmT/KGSU6sRvYnSPA7T9OBBFdcEsLiDim8Y+1Xg9J5vU6/a7hGEVXUghsxX+QQieEKbfhIXlJTNOx7mj5p86JtcVDonHkGBDuIQtDJYrWIf35z37ml9Dsdq5YL9eqlbtuqi0=
+#  app: shielded-thicket-67247
+#  on:
+#repo: Atrylon/IPSSI_symfony_ci
