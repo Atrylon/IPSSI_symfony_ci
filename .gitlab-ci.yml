@@ -8,15 +8,20 @@ before_script:
 
 stages:
   - test
+  - deploy
 
 php_cs_fixer:
   stage: test
   script:
     - docker pull takamichi/php-cs-fixer
-    - docker run --rm -v $(pwd):/app takamichi/php-cs-fixer
+    - docker run --rm -v $(pwd):/app php:7.3-cli takamichi/php-cs-fixer fix --dry-run  --diff --verbose
 
 unit_test:
   stage: test
   script:
     - docker pull phpunit/phpunit
     - docker run -v $(pwd):/app --rm phpunit/phpunit tests
+
+mon_deploy:
+    stage: deploy
+    script: echo "Deploy ..."
